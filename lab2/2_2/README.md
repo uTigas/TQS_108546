@@ -1,0 +1,1 @@
+b) The subject under test is the resolver class, and the mocked service will be the remote geocoding.
