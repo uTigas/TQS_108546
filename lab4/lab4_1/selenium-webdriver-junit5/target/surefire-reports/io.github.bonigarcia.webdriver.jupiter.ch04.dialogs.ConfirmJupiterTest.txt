@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.github.bonigarcia.webdriver.jupiter.ch04.dialogs.ConfirmJupiterTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.613 s -- in io.github.bonigarcia.webdriver.jupiter.ch04.dialogs.ConfirmJupiterTest

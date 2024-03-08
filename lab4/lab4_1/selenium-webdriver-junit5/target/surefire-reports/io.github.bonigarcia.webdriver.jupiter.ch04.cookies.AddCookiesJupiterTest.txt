@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.github.bonigarcia.webdriver.jupiter.ch04.cookies.AddCookiesJupiterTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.882 s -- in io.github.bonigarcia.webdriver.jupiter.ch04.cookies.AddCookiesJupiterTest

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: BuyTripPageObjectTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.120 s <<< FAILURE! -- in BuyTripPageObjectTest
+BuyTripPageObjectTest.buyTrip(WebDriver) -- Time elapsed: 0.036 s <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: Failed to resolve parameter [org.openqa.selenium.WebDriver arg0] in method [void BuyTripPageObjectTest.buyTrip(org.openqa.selenium.WebDriver)]: org/openqa/selenium/opera/OperaDriver
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.NoClassDefFoundError: org/openqa/selenium/opera/OperaDriver
+	at io.github.bonigarcia.seljup.CapabilitiesHandler.getOptionsClass(CapabilitiesHandler.java:116)
+	at io.github.bonigarcia.seljup.CapabilitiesHandler.getCapabilities(CapabilitiesHandler.java:95)
+	at io.github.bonigarcia.seljup.SeleniumJupiter.getCapabilities(SeleniumJupiter.java:455)
+	at io.github.bonigarcia.seljup.SeleniumJupiter.getManagerForDocker(SeleniumJupiter.java:397)
+	at io.github.bonigarcia.seljup.SeleniumJupiter.resolveSeleniumWebDriver(SeleniumJupiter.java:208)
+	at io.github.bonigarcia.seljup.SeleniumJupiter.resolveParameter(SeleniumJupiter.java:170)
+	... 2 more
+Caused by: java.lang.ClassNotFoundException: org.openqa.selenium.opera.OperaDriver
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 8 more
+

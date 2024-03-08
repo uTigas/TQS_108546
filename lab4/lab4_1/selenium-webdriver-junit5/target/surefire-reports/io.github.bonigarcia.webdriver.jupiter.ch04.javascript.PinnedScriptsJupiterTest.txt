@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.github.bonigarcia.webdriver.jupiter.ch04.javascript.PinnedScriptsJupiterTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.134 s -- in io.github.bonigarcia.webdriver.jupiter.ch04.javascript.PinnedScriptsJupiterTest
