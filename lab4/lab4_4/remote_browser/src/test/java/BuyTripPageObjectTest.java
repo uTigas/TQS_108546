@@ -1,4 +1,4 @@
-import static io.github.bonigarcia.seljup.BrowserType.EDGE;
+import static io.github.bonigarcia.seljup.BrowserType.CHROME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ public class BuyTripPageObjectTest {
     PurchasePage purchasePage;
     
     @Test
-    void buyTrip(@DockerBrowser(type = EDGE) WebDriver driver) {
+    void buyTrip(@DockerBrowser(type = CHROME) WebDriver driver) {
         homePage = new HomePage(driver);
 
         homePage.choseDeparture("Boston");

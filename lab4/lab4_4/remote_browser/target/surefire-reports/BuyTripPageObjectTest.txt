@@ -1,22 +1,61 @@
 -------------------------------------------------------------------------------
 Test set: BuyTripPageObjectTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.120 s <<< FAILURE! -- in BuyTripPageObjectTest
-BuyTripPageObjectTest.buyTrip(WebDriver) -- Time elapsed: 0.036 s <<< ERROR!
-org.junit.jupiter.api.extension.ParameterResolutionException: Failed to resolve parameter [org.openqa.selenium.WebDriver arg0] in method [void BuyTripPageObjectTest.buyTrip(org.openqa.selenium.WebDriver)]: org/openqa/selenium/opera/OperaDriver
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.426 s <<< FAILURE! -- in BuyTripPageObjectTest
+BuyTripPageObjectTest.buyTrip(WebDriver) -- Time elapsed: 3.099 s <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: Failed to resolve parameter [org.openqa.selenium.WebDriver arg0] in method [void BuyTripPageObjectTest.buyTrip(org.openqa.selenium.WebDriver)]: There was an error creating WebDriver object for Chrome
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-Caused by: java.lang.NoClassDefFoundError: org/openqa/selenium/opera/OperaDriver
-	at io.github.bonigarcia.seljup.CapabilitiesHandler.getOptionsClass(CapabilitiesHandler.java:116)
-	at io.github.bonigarcia.seljup.CapabilitiesHandler.getCapabilities(CapabilitiesHandler.java:95)
-	at io.github.bonigarcia.seljup.SeleniumJupiter.getCapabilities(SeleniumJupiter.java:455)
-	at io.github.bonigarcia.seljup.SeleniumJupiter.getManagerForDocker(SeleniumJupiter.java:397)
-	at io.github.bonigarcia.seljup.SeleniumJupiter.resolveSeleniumWebDriver(SeleniumJupiter.java:208)
+Caused by: io.github.bonigarcia.wdm.config.WebDriverManagerException: There was an error creating WebDriver object for Chrome
+	at io.github.bonigarcia.wdm.WebDriverManager.instantiateDriver(WebDriverManager.java:1762)
+	at io.github.bonigarcia.wdm.WebDriverManager.create(WebDriverManager.java:432)
+	at io.github.bonigarcia.seljup.SeleniumJupiter.getObjectFromWdm(SeleniumJupiter.java:243)
+	at io.github.bonigarcia.seljup.SeleniumJupiter.resolveSeleniumWebDriver(SeleniumJupiter.java:232)
 	at io.github.bonigarcia.seljup.SeleniumJupiter.resolveParameter(SeleniumJupiter.java:170)
 	... 2 more
-Caused by: java.lang.ClassNotFoundException: org.openqa.selenium.opera.OperaDriver
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
-	... 8 more
+Caused by: java.lang.RuntimeException: java.io.IOException: com.sun.jna.LastErrorException: [2] Ficheiro ou pasta inexistente
+	at com.github.dockerjava.httpclient5.ApacheDockerHttpClientImpl.execute(ApacheDockerHttpClientImpl.java:195)
+	at com.github.dockerjava.httpclient5.ApacheDockerHttpClient.execute(ApacheDockerHttpClient.java:9)
+	at com.github.dockerjava.core.DefaultInvocationBuilder.execute(DefaultInvocationBuilder.java:228)
+	at com.github.dockerjava.core.DefaultInvocationBuilder.post(DefaultInvocationBuilder.java:124)
+	at com.github.dockerjava.core.exec.CreateContainerCmdExec.execute(CreateContainerCmdExec.java:37)
+	at com.github.dockerjava.core.exec.CreateContainerCmdExec.execute(CreateContainerCmdExec.java:13)
+	at com.github.dockerjava.core.exec.AbstrSyncDockerCmdExec.exec(AbstrSyncDockerCmdExec.java:21)
+	at com.github.dockerjava.core.command.AbstrDockerCmd.exec(AbstrDockerCmd.java:33)
+	at com.github.dockerjava.core.command.CreateContainerCmdImpl.exec(CreateContainerCmdImpl.java:608)
+	at io.github.bonigarcia.wdm.docker.DockerService.startContainer(DockerService.java:254)
+	at io.github.bonigarcia.wdm.docker.DockerService.startBrowserContainer(DockerService.java:676)
+	at io.github.bonigarcia.wdm.WebDriverManager.createDockerWebDriver(WebDriverManager.java:1877)
+	at io.github.bonigarcia.wdm.WebDriverManager.instantiateDriver(WebDriverManager.java:1742)
+	... 6 more
+Caused by: java.io.IOException: com.sun.jna.LastErrorException: [2] Ficheiro ou pasta inexistente
+	at com.github.dockerjava.transport.DomainSocket.<init>(DomainSocket.java:63)
+	at com.github.dockerjava.transport.LinuxDomainSocket.<init>(LinuxDomainSocket.java:41)
+	at com.github.dockerjava.transport.DomainSocket.get(DomainSocket.java:140)
+	at com.github.dockerjava.transport.UnixSocket.get(UnixSocket.java:29)
+	at com.github.dockerjava.httpclient5.ApacheDockerHttpClientImpl$2.createSocket(ApacheDockerHttpClientImpl.java:153)
+	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:155)
+	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:447)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:162)
+	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:172)
+	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:142)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:192)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:96)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:152)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:115)
+	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
+	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:170)
+	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:87)
+	at com.github.dockerjava.httpclient5.ApacheDockerHttpClientImpl.execute(ApacheDockerHttpClientImpl.java:191)
+	... 18 more
+Caused by: com.sun.jna.LastErrorException: [2] Ficheiro ou pasta inexistente
+	at com.github.dockerjava.transport.LinuxDomainSocket.connect(Native Method)
+	at com.github.dockerjava.transport.LinuxDomainSocket.connect(LinuxDomainSocket.java:49)
+	at com.github.dockerjava.transport.DomainSocket.open(DomainSocket.java:69)
+	at com.github.dockerjava.transport.DomainSocket.<init>(DomainSocket.java:59)
+	... 39 more
 
