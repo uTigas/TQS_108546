@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Set up Database
-      run: ./run.sh
+      run: ./run.sh mysql mysql
     - name: Build with Maven
       run: mvn -B package --file hw1/fs_webApp/pom.xml
 
