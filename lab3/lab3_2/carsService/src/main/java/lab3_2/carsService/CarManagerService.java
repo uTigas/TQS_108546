@@ -19,7 +19,7 @@ public class CarManagerService {
 
     public List<Car> getAllCars(){
         return carRepository.findAll();
-    }
+    } 
 
     public Optional<Car> getCarDetails(Long carId){
         return carRepository.findById(carId);
