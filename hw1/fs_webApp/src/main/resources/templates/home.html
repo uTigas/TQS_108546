@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Add page-specific CSS files or stylesheets here -->
+</head>
+<body>
+    <div th:replace="base.html"></div>
+    <div style="height: 100%; width: 100%;">
+        <section th:fragment="content"> 
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner w-100 h-100">
+                    <div class="carousel-item active">
+                        <img src="https://i.pinimg.com/originals/e9/5d/de/e95ddece6811979e4a83e932c4116680.jpg" class="d-block" style="width: 100%; height: 100%; object-fit:cover;" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://i.pinimg.com/originals/17/c2/22/17c22245dbb2f3f7c55e974401cb8e6e.jpg" class="d-block" style="width: 100%; height: 100%; object-fit:cover;" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://i.pinimg.com/originals/8c/f2/de/8cf2de649147e8f3f705d07d0e2c2e62.jpg" class="d-block" style="width: 100%; height: 100%; object-fit:cover;" alt="...">
+                    </div>
+                </div>
+            </div>
+            <div class="w-75 " style=" position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
+              <button class="text-light text-center w-100 h-100 fs-1" style="background-color: rgba(0, 0, 0, 0.75)">Click to start looking for new Adventures</button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
