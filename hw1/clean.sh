@@ -19,4 +19,4 @@ docker rmi "$(docker images --format '{{.Repository}}:{{.Tag}}' | grep "$contain
 docker volume prune -f
 
 # Clear Docker cache
-docker system prune -af
+# docker system prune -af

@@ -20,6 +20,11 @@ public class RestAPI {
 
     @GetMapping("/cities")
     public ResponseEntity<List<Terminal>> getCities(){
-        return new ResponseEntity<>(service.getAllCities(),HttpStatus.OK);
+        return new ResponseEntity<>(service.getAllTerminals(),HttpStatus.OK);
+    }
+    
+    @GetMapping("/terminals")
+    public ResponseEntity<List<Terminal>> getTerminals(){
+        return new ResponseEntity<>(service.getAllTerminals(),HttpStatus.OK);
     }
 }

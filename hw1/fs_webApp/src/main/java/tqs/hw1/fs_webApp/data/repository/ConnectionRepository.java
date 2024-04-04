@@ -1,6 +1,5 @@
 package tqs.hw1.fs_webApp.data.repository;
 
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,10 +9,10 @@ import tqs.hw1.fs_webApp.data.entity.Terminal;
 import tqs.hw1.fs_webApp.data.entity.Connection;
 
 @Repository
-public interface ConnectionRepository extends CrudRepository<Connection, Long>{
+public interface ConnectionRepository extends CrudRepository<Connection, Integer>{
     List<Connection> findAll();
-    List<Connection> findByDepartureGreaterThanEqual(LocalTime departure);
-    List<Connection> findByArrivalLessThanEqual(LocalTime departure);
+    List<Connection> findByDepartureGreaterThanEqual(long departure);
+    List<Connection> findByArrivalLessThanEqual(long departure);
     List<Connection> findByOrigin(Terminal origin);
     List<Connection> findByDestination(Terminal destination);
 }

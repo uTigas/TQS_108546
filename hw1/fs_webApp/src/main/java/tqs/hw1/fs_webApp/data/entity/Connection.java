@@ -1,8 +1,5 @@
 package tqs.hw1.fs_webApp.data.entity;
 
-
-import java.time.LocalTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +13,7 @@ public class Connection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @ManyToOne
     private Bus bus;
@@ -31,15 +28,15 @@ public class Connection {
 
     private double price;
 
-    private LocalTime departure;
+    private long departure;
 
-    private LocalTime arrival;
+    private long arrival;
 
     public Connection (){
 
     }
     
-    public Connection (Bus bus, Terminal origin, Terminal destination, double price, LocalTime departure, LocalTime arrival){
+    public Connection (Bus bus, Terminal origin, Terminal destination, double price, long departure, long arrival){
         this.bus = bus;
         this.origin = origin;
         this.destination = destination;
@@ -89,19 +86,19 @@ public class Connection {
         this.price = price;
     }
 
-    public LocalTime getDeparture() {
+    public long getDeparture() {
         return this.departure;
     }
 
-    public void setDeparture(LocalTime departure) {
+    public void setDeparture(long departure) {
         this.departure = departure;
     }
 
-    public LocalTime getArrival() {
+    public long getArrival() {
         return this.arrival;
     }
 
-    public void setArrival(LocalTime arrival) {
+    public void setArrival(long arrival) {
         this.arrival = arrival;
     }
 

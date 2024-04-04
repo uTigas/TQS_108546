@@ -22,7 +22,7 @@ public class TicketManagerService {
     @Autowired(required = true)
     TerminalRepository terminalRepo;
 
-    public List<Terminal> getAllCities(){
+    public List<Terminal> getAllTerminals(){
         return terminalRepo.findAll();
     }
     

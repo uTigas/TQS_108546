@@ -10,7 +10,6 @@ public class Bus {
     private String id;
 
     public Bus(){
-
     }
 
     public Bus(String id){

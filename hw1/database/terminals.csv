@@ -1,0 +1,33 @@
+name,latitude,longitude,city,description
+London_EAST,51.5074,-0.1278,London,Experience the vibrant culture of East London
+London_WEST,51.5074,-0.1278,London,Discover the historic charm of West London
+Paris_EAST,48.8566,2.3522,Paris,Explore the artistic scene of the East Side
+Paris_WEST,48.8566,2.3522,Paris,Indulge in the elegance of the West Side
+Berlin_EAST,52.5200,13.4050,Berlin,Embrace the creativity of East Berlin
+Berlin_WEST,52.5200,13.4050,Berlin,Discover the history of West Berlin
+Rome_EAST,41.9028,12.4964,Rome,Experience the ancient wonders of East Rome
+Rome_WEST,41.9028,12.4964,Rome,Explore the religious heritage of West Rome
+Madrid_EAST,40.4168,-3.7038,Madrid,Enjoy the vibrant nightlife of East Madrid
+Madrid_WEST,40.4168,-3.7038,Madrid,Discover the cultural richness of West Madrid
+Amsterdam_EAST,52.3676,4.9041,Amsterdam,Experience the eclectic vibe of East Amsterdam
+Amsterdam_WEST,52.3676,4.9041,Amsterdam,Indulge in the scenic beauty of West Amsterdam
+Brussels_EAST,50.8503,4.3517,Brussels,Explore the culinary delights of East Brussels
+Brussels_WEST,50.8503,4.3517,Brussels,Discover the architectural wonders of West Brussels
+Zurich_EAST,47.3769,8.5417,Zurich,Experience the modernity of East Zurich
+Zurich_WEST,47.3769,8.5417,Zurich,Indulge in the tranquility of West Zurich
+Vienna_EAST,48.2082,16.3738,Vienna,Discover the musical heritage of East Vienna
+Vienna_WEST,48.2082,16.3738,Vienna,Experience the imperial grandeur of West Vienna
+Prague_EAST,50.0755,14.4378,Prague,Explore the medieval charm of East Prague
+Prague_WEST,50.0755,14.4378,Prague,Discover the architectural marvels of West Prague
+Budapest_EAST,47.4979,19.0402,Budapest,Experience the vibrant energy of East Budapest
+Budapest_WEST,47.4979,19.0402,Budapest,Discover the historic treasures of West Budapest
+Milan_EAST,45.4642,9.1900,Milan,Explore the fashion capital of East Milan
+Milan_WEST,45.4642,9.1900,Milan,Indulge in the artistic charm of West Milan
+Lisbon_EAST,38.7223,-9.1393,Lisbon,Experience the coastal beauty of East Lisbon
+Lisbon_WEST,38.7223,-9.1393,Lisbon,Discover the historic legacy of West Lisbon
+Munich_EAST,48.1351,11.5820,Munich,Experience the cultural diversity of East Munich
+Munich_WEST,48.1351,11.5820,Munich,Indulge in the Bavarian charm of West Munich
+Krakow_EAST,50.0647,19.9450,Krakow,Explore the medieval heritage of East Krakow
+Krakow_WEST,50.0647,19.9450,Krakow,Discover the artistic ambiance of West Krakow
+Barcelona_WEST,41.3851,2.1734,Barcelona,Indulge in the seaside charm of West Barcelona
+Barcelona_EAST,41.3851,2.1734,Barcelona,Experience the artistic vibe of East Barcelona

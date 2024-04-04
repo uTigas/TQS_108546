@@ -17,7 +17,7 @@ cd "$dockerfile_path"
 docker build -t "$image_name" .
 
 # Run the Database Docker container
-docker run -d -p 3306:3306 --name "$container_name" "$image_name"
+docker run -d -p 3306:3306 --name "$container_name" "$image_name" --local-infile=1
 
 cd ".."
 

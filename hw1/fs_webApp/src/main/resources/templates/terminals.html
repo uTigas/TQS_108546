@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Add page-specific CSS files or stylesheets here -->
+</head>
+<body>
+    <div th:replace="~{base.html}"></div>
+    <div class="container">
+        <div th:each="terminal: ${terminals}" class="card text-center">
+            <div class="card-header">
+              Featured
+            </div>
+            <div class="card-body">
+              <h5 class="card-title" th:text="${terminal.description}"></h5>
+              <p class="card-text" th:text="${terminal.description}"></p>
+              <a href="#" class="btn btn-primary">Check Connections</a>
+            </div>
+            <div class="card-footer text-muted">
+              2 days ago
+            </div>
+          </div>
+    </div>
+</body>
+</html>
