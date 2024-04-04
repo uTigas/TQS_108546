@@ -9,4 +9,4 @@ To create the docker container, simply head to fs_webApp/database and run the fo
 
     docker run -d -p 3306:3306 --name mysql-container-name mysql 
 
- Project made by Tiago Pereira, nMec 108546
+Project made by Tiago Pereira, nMec 108546
