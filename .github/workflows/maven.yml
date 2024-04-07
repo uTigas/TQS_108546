@@ -29,6 +29,8 @@ jobs:
         cache: maven
     - name: Change directory to hw1
       run: cd hw1
+    - name: Set executable permissions for compile.sh
+      run: chmod +x compile.sh
     - name: Run Application with testing
       run: ./compile.sh mysql hw1
 
