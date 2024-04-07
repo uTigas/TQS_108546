@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import tqs.hw1.fs_webApp.data.entity.Connection;
 
-class ConnectionTests {
+class ConnectionTest {
 
 	@Test
 	void testDistanceBetweenCities(){

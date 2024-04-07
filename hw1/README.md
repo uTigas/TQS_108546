@@ -1,13 +1,6 @@
 ## Run Database
 Database is hosted in a mysql instance running over docker.
 
-To create the docker container, simply head to fs_webApp/database and run the following commands on your terminal:
-
-    docker build -t mysql .
-
-##### and
-
-    docker run -d -p 3306:3306 --name mysql-container-name mysql 
-To run the project, simply execute compile.sh with the necessary +x permissions.
+To run the project, simply execute compile.sh, from the hw1 directory with the necessary +x permissions.
 
 Project made by Tiago Pereira, nMec 108546

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Check if arguments are provided
 if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <image_name> <container_name>"
