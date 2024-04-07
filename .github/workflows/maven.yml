@@ -17,7 +17,9 @@ on:
 jobs:
   build:
     if: "contains(github.event.head_commit.message, 'hw1')"
-
+    defaults:
+      run:
+        working-directory: hw1 
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -27,8 +29,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Change directory to hw1
-      run: cd hw1
     - name: List Directory Files for Debug
       run: ls -a
     - name: Set executable permissions for compile.sh
