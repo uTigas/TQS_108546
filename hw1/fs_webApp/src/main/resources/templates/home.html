@@ -36,37 +36,77 @@
         </div>
     </div>
     <div class="container mt-5">
-        <h1>Flight Booking</h1>
-        <div class="row">
-            <div class="col">
+        <h1>Tell us what you're looking for:</h1>
+        <div class="row mt-5">
+            <div class="col-4">
                 <!-- Departure City Dropdown -->
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle w-50" style="background-color: rgb(0,0,153);" type="button" id="departureDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Select Departure City
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="departureDropdown">
-                        <li><a class="dropdown-item" href="#">New York</a></li>
-                        <li><a class="dropdown-item" href="#">Los Angeles</a></li>
-                        <li><a class="dropdown-item" href="#">Chicago</a></li>
-                        <!-- Add more cities as needed -->
+                        <li th:each="city : ${origins}"><a class="dropdown-item" href="#" onclick="updateInput('selectedOrigin', this.textContent)" th:text="${city}"></a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <!-- Arrival City Dropdown -->
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle w-50" type="button" id="arrivalDropdown"  style="background-color: rgb(0,0,153);" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-primary dropdown-toggle w-0" type="button" id="arrivalDropdown"  style="background-color: rgb(0,0,153);" data-bs-toggle="dropdown" aria-expanded="false">
                         Select Arrival City
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="arrivalDropdown">
-                        <li><a class="dropdown-item" href="#">London</a></li>
-                        <li><a class="dropdown-item" href="#">Paris</a></li>
-                        <li><a class="dropdown-item" href="#">Tokyo</a></li>
-                        <!-- Add more cities as needed -->
+                        <li th:each="city : ${destinations}"><a class="dropdown-item" href="#" onclick="updateInput('selectedDestination', this.textContent)" th:text="${city}"></a></li>
                     </ul>
                 </div>
             </div>
+            
+        </div>
+        <div class="row mt-2">
+            <div class="col ">
+                <input class="w-60" disabled id="selectedOrigin">
+            </div>
+            <div class="col">
+                <input class="w-60" disabled id="selectedDestination">
+            </div>
+
+            <div class="col">
+                <button id="searchBtn" th:onclick="searchWithParams()" disabled type="button w-50" class="btn" style="background-color: rgb(0,0,153); color: white;">Search <i class="bi bi-search"></i></button>
+            </div>
         </div>
     </div>
+    <script>
+        function updateInput(inputId, value) {
+            document.getElementById(inputId).value = value;
+            if (inputId == "selectedOrigin"){
+                document.getElementById("selectedDestination").value = "";
+            }
+            validateSearch();
+        }
+
+        function validateSearch() {
+            var origin = document.getElementById("selectedOrigin").value;
+            var destination = document.getElementById("selectedDestination").value;
+            var searchBtn = document.getElementById("searchBtn");
+            if (origin != "" && destination != ""){
+                searchBtn.disabled = false;
+            }
+            else {
+                searchBtn.disabled = true;
+            }
+        }
+        function searchWithParams() {
+            // Get the values of the input fields
+            var origin = document.getElementById("selectedOrigin").value;
+            var destination = document.getElementById("selectedDestination").value;
+            
+            // Build the URL with query parameters
+            var url = "/results?origin=" + encodeURIComponent(origin) + "&destination=" + encodeURIComponent(destination);
+            
+            // Redirect to the results page with the query parameters
+            window.location.href = url;
+        }
+
+    </script>
 </body>
 </html>

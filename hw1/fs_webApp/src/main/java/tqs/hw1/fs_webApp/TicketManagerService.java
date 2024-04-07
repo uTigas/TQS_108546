@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tqs.hw1.fs_webApp.data.entity.Connection;
 import tqs.hw1.fs_webApp.data.entity.Terminal;
 import tqs.hw1.fs_webApp.data.repository.BusRepository;
 import tqs.hw1.fs_webApp.data.repository.TerminalRepository;
@@ -26,4 +27,15 @@ public class TicketManagerService {
         return terminalRepo.findAll();
     }
     
+    public List<String> getOrigins(){
+        return connectionRepo.findDistinctOriginCities();
+    }
+
+    public List<String> getDestinations(){
+        return connectionRepo.findDistinctDestinationCities();
+    }
+
+    public List<Connection> getConnectionsFromTo(String origin, String destination){
+        return connectionRepo.findConnectionsFromTo(origin, destination);
+    }
 }

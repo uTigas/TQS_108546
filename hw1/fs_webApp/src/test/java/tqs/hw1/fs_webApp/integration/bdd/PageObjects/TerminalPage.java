@@ -1,20 +1,17 @@
 package tqs.hw1.fs_webApp.integration.bdd.PageObjects;
 
-import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
+public class TerminalPage {
     private WebDriver driver;
 
     //Page URL
-    private static String PAGE_URL="https://localhost:8080/";
+    private static String PAGE_URL="https://localhost:8080/terminals";
 
    //Locators
 /*
@@ -30,7 +27,7 @@ public class HomePage {
     private WebElement listTerminalsbtn;
 
     //Constructor
-    public HomePage(WebDriver driver){
+    public TerminalPage(WebDriver driver){
         this.driver=driver;
         this.driver.get(PAGE_URL);
         //Initialise Elements
@@ -59,14 +56,5 @@ public class HomePage {
     */
     public void clickFindAdventures(){
         listTerminalsbtn.click();
-    }
-
-    public void resizeScreen(){
-        driver.manage().window().setSize(new Dimension(1850, 1053));
-    }
-
-    public int countNumberTerminals(){
-        List<WebElement> cards = driver.findElements(By.className(".card"));
-        return cards.size();
     }
 }

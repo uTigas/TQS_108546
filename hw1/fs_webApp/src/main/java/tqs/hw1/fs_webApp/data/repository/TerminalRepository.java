@@ -11,4 +11,7 @@ import tqs.hw1.fs_webApp.data.entity.Terminal;
 public interface TerminalRepository extends CrudRepository<Terminal, String>{
     List<Terminal> findAll();
     List<Terminal> findByCity(String city);
+    List<String> findDistinctCityBy();
+
+
 }

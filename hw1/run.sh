@@ -10,6 +10,6 @@ fi
 container_name=$2
 
 # Run the Database Docker container
-docker run "$container_name"
+docker start "$container_name"
 
 mvn -f ./fs_webApp/pom.xml spring-boot:run
