@@ -8,17 +8,17 @@
 </head>
 <body>
     <div th:replace="~{base.html}"></div>
-    <div class="container">
-        <div th:each="terminal: ${terminals}" class="card text-center">
-            <div class="card-header">
+    <div class="container" >
+        <div th:each="terminal: ${terminals}" class="card text-center col-5 mt-3" style="display: inline-block; height: 300px;">
+            <div class="card-header"  style="background-color: rgb(0,0,153); color: white;">
               Featured
             </div>
             <div class="card-body">
               <h5 class="card-title" th:text="${terminal.description}"></h5>
               <p class="card-text" th:text="${terminal.description}"></p>
-              <a href="#" class="btn btn-primary">Check Connections</a>
+              <a href="#" class="btn btn-primary"  style="background-color: rgb(0,0,153); color: white;">Check Connections</a>
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer text-muted align-bottom" >
               2 days ago
             </div>
           </div>

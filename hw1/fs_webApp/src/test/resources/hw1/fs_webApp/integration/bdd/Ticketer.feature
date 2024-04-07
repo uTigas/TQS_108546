@@ -3,9 +3,9 @@
 Feature: Ticketer Operations
 
     Background: Setup
-        Given im in the mainpage and the Database has some data
+        Given Im in the mainpage
 
     Scenario: List Terminals
         When I click the Terminals Button on the Main Page
-        Then im presented with multiple terminal options
+        Then Im presented with multiple terminal options
 
