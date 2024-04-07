@@ -30,7 +30,7 @@ jobs:
     - name: Change directory to hw1
       run: cd hw1
     - name: Run Application with testing
-      run: ./compile.sh
+      run: ./compile.sh mysql hw1
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
