@@ -5,6 +5,13 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS (`id`);
 
+LOAD DATA INFILE '/var/lib/mysql-files/currency.csv' 
+INTO TABLE currency 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS (`id`, `currency`);
+
 -- Insert seats for each bus
 INSERT INTO seat (bus_id, seat_number)
 SELECT id, number

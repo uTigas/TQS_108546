@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 # Assign arguments to variables
-container_name=$2
+container_name=$1
 
 # Run the Database Docker container
 docker start "$container_name"

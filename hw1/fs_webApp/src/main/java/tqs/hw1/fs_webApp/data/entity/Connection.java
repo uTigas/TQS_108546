@@ -15,25 +15,26 @@ public class Connection {
     @Column(name = "id")
     private int id;
 
+    
     @ManyToOne
     private Bus bus;
-
+    
     @ManyToOne
     private Terminal origin;
-
+    
     @ManyToOne
     private Terminal destination;
-
+    
     private double distance;
-
+    
     private double price;
-
+    
     private long departure;
-
+    
     private long arrival;
-
+    
     public Connection (){
-
+        
     }
     
     public Connection (Bus bus, Terminal origin, Terminal destination, double price, long departure, long arrival){
@@ -44,6 +45,14 @@ public class Connection {
         this.departure = departure;
         this.arrival = arrival;
         this.distance = haversine(origin.getCoordinates(), destination.getCoordinates());
+    }
+    
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Bus getBus() {

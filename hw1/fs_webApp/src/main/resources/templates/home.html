@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <!-- Add page-specific CSS files or stylesheets here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
 </head>
 <body>
     <div th:replace="~{base.html}"></div>
@@ -24,9 +26,7 @@
         </div>
         <div class="w-75 " style=" position: fixed; top: 500px; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
             <button class="text-light text-center w-100 h-100 fs-1" style="background-color: rgba(0, 0, 0, 0.75)"
-            th:onclick="window.location.href='/terminals'">
-                Start looking for new Adventures
-            </button>
+            th:onclick="window.location.href='/terminals'" id="adventuresBtn">Start looking for new Adventures</button>
         </div>
         <div class="container bg-dark" style="height: fit-content;width: 100%;">
             <form class="form-inline">
@@ -37,11 +37,11 @@
     </div>
     <div class="container mt-5">
         <h1>Tell us what you're looking for:</h1>
-        <div class="row mt-5">
-            <div class="col-4">
+        <div class="row mt-5 ">
+            <div class="col-3">
                 <!-- Departure City Dropdown -->
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle w-50" style="background-color: rgb(0,0,153);" type="button" id="departureDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-primary dropdown-toggle" style="background-color: rgb(0,0,153);" type="button" id="departureDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Select Departure City
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="departureDropdown">
@@ -49,10 +49,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <!-- Arrival City Dropdown -->
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle w-0" type="button" id="arrivalDropdown"  style="background-color: rgb(0,0,153);" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-primary dropdown-toggle " type="button" id="arrivalDropdown"  style="background-color: rgb(0,0,153);" data-bs-toggle="dropdown" aria-expanded="false">
                         Select Arrival City
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="arrivalDropdown">
@@ -60,22 +60,59 @@
                     </ul>
                 </div>
             </div>
-            
+            <div class="col-2">
+                <h6>From:</h6>
+            </div>
+            <div class="col-2">
+                <h6>To:</h6>
+            </div>
         </div>
         <div class="row mt-2">
-            <div class="col ">
-                <input class="w-60" disabled id="selectedOrigin">
-            </div>
-            <div class="col">
-                <input class="w-60" disabled id="selectedDestination">
+            <div class="col-3">
+                <input class="" disabled id="selectedOrigin">
+            </div>  
+            <div class="col-3">
+                <input class="" disabled id="selectedDestination">
             </div>
 
+            <div class="col-2">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control" id="datepicker-input-from">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+                <input type="hidden" id="hidden-dateFrom">
+                
+            </div>
+            <div class="col-2">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control" id="datepicker-input-to">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+                
+                <input type="hidden" id="hidden-dateTo">
+                
+            </div>
+    
             <div class="col">
                 <button id="searchBtn" th:onclick="searchWithParams()" disabled type="button w-50" class="btn" style="background-color: rgb(0,0,153); color: white;">Search <i class="bi bi-search"></i></button>
             </div>
         </div>
+
     </div>
     <script>
+        $(document).ready(function () {
+            // Initialize datepicker
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd', // Set the desired date format
+                autoclose: true // Close the datepicker when a date is selected
+            });
+
+        });
+
         function updateInput(inputId, value) {
             document.getElementById(inputId).value = value;
             if (inputId == "selectedOrigin"){
@@ -99,14 +136,18 @@
             // Get the values of the input fields
             var origin = document.getElementById("selectedOrigin").value;
             var destination = document.getElementById("selectedDestination").value;
-            
+            var fromDate = document.getElementById("datepicker-input-from").value;
+            var toDate = document.getElementById("datepicker-input-to").value;
+
             // Build the URL with query parameters
-            var url = "/results?origin=" + encodeURIComponent(origin) + "&destination=" + encodeURIComponent(destination);
+            var url = "/results?origin=" + encodeURIComponent(origin) + "&destination=" + encodeURIComponent(destination) + "&fromDate=" + encodeURIComponent(fromDate) + "&toDate=" + encodeURIComponent(toDate);
             
             // Redirect to the results page with the query parameters
             window.location.href = url;
         }
 
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
 </body>
 </html>

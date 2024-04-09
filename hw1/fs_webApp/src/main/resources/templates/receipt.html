@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Add page-specific CSS files or stylesheets here -->
+</head>
+<body>
+    <div th:replace="~{base.html}"></div>
+    <div class="container" >
+        <table class="table">
+            <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+                            <tr>
+                    <td>Token - Save this so you can access your Ticket in the future</td>
+                    <td th:text="${ticket.token}"></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>PendingCapture</td>
+                </tr>
+                <tr>
+                    <td>Amount</td>
+                    <td th:text="${ticket.totalPrice * rate} ${currency}"></td>
+                </tr>
+                <tr>
+                    <td>Card Number</td>
+                    <td>xxxxxxxxxxxx1111</td>
+                </tr>
+                <tr>
+                    <td>Expiration</td>
+                    <td th:text="${#dates.format(ticket.timestamp - 3600000*24*30, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+                <tr>
+                    <td>Auth Code</td>
+                    <td>888888</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td th:text="${#dates.format(ticket.timestamp, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

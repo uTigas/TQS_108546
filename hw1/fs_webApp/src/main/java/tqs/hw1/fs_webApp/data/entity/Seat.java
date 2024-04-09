@@ -12,14 +12,25 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int seat_number;
+    private int seatNumber;
 
-    public int getNumber() {
-        return this.seat_number;
+    @ManyToOne
+    private Bus bus;
+
+    public Bus getBus() {
+        return this.bus;
     }
 
-    public void setNumber(int seat_number) {
-        this.seat_number = seat_number;
+    public void setBus(Bus bus) {
+        this.bus = bus;
+    }
+
+    public int getSeatNumber() {
+        return this.seatNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
     }
 
     public int getId() {
@@ -30,6 +41,4 @@ public class Seat {
         this.id = id;
     }
 
-    @ManyToOne
-    private Bus bus;
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Add page-specific CSS files or stylesheets here -->
+</head>
+<body>
+    <div th:replace="~{base.html}"></div>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col">
+          <h4 style="text-align: center;" id="initialMessage">Enter your Ticket TOKEN:</h4>
+          <h4 th:if="${ticket == null}" style="text-align: center;" id="errorMessage" >Invalid Token. Please check the details and try again:</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" id="token">
+          
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col d-flex justify-content-center">
+          <button th:onclick="searchTicket()" id="searchBtn" type="button" class="btn" style="background-color: rgb(0,0,153); color: white;">Search <i class="bi bi-search"></i></button>
+        </div>
+      </div>
+      <div class="row mt-2">
+        
+        <div class="cold d-flex justify-content-center">
+          <div th:if="${ticket != null}" class="container" th:with="symbol=${session.currencySymbol} ?: '€', rate=${session.rate} ?: 1.0">
+            <h3 th:text="'Total Ticket price: ' +  ${ticket.totalPrice * rate} + ' ' +  ${symbol}"></h3>
+            <h4 class="mt-5">Stints:</h4>
+            <div th:each="stint: ${ticket.stints}" class="card text-center col-5 mt-3" style="height: 300px; display: inline-flex; flex-direction: column;">
+                <div class="card-header"  style="background-color: rgb(0,0,153); color: white;" th:text="'Bus ' + ${stint.con.bus.id} + ' Seat nº' + ${stint.seat.seatNumber}" ></div>
+                <div class="card-body">
+                  <h5 class="card-title" th:text="${stint.con.origin.name}"></h5>
+                  <p class="card-text" th:text="${stint.con.destination.description}"></p>
+                  <p class="card-text" th:text="'Departure : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(stint.con.departure), 'yyyy-MM-dd HH:mm:ss')}"></p>
+                  <p class="card-text" th:text="'Arrival : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(stint.con.arrival), 'yyyy-MM-dd HH:mm:ss')}"></p>
+                    
+                </div>
+                <div class="card-footer text-muted" style="margin-top: auto;" th:with="symbol=${session.currencySymbol} ?: '€', rate=${session.rate} ?: 1.0" >
+                  <h6 th:text="${stint.con.price * rate} + ' ' +  ${symbol}"></h6>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function searchTicket() {
+            // Get the values of the input fields
+            var token = document.getElementById("token").value;
+
+            // Build the URL with query parameters
+            var url = "/tickets?token=" + encodeURIComponent(token) ;
+            
+            // Redirect to the results page with the query parameters
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

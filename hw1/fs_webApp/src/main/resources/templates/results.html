@@ -9,18 +9,21 @@
 <body>
     <div th:replace="~{base.html}"></div>
     <div class="container" >
-        <div th:each="connection: ${connections}" class="card text-center col-5 mt-3" style="display: inline-block; height: 300px;">
-            <div class="card-header"  style="background-color: rgb(0,0,153); color: white;">
-              Featured
-            </div>
+        <div th:each="connection: ${connections}" class="card text-center col-5 mt-3" style="height: 300px; display: inline-flex; flex-direction: column;">
+            <div class="card-header"  style="background-color: rgb(0,0,153); color: white;" th:text="'Bus ' + ${connection.bus.id}"></div>
             <div class="card-body">
               <h5 class="card-title" th:text="${connection.origin.name}"></h5>
               <p class="card-text" th:text="${connection.destination.description}"></p>
-              <a href="#" class="btn btn-primary"  style="background-color: rgb(0,0,153); color: white;">Check Connections</a>
+              <p class="card-text" th:text="'Departure : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(connection.departure), 'yyyy-MM-dd HH:mm:ss')}"></p>
+              <p class="card-text" th:text="'Arrival : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(connection.arrival), 'yyyy-MM-dd HH:mm:ss')}"></p>
+
+              <a type="button" th:href="@{/purchase(connectionId=${connection.id})}" class="btn btn-primary" style="background-color: darkgreen; border-color: darkgreen; color: white;">Buy Ticket</a>
+            
             </div>
-            <div class="card-footer text-muted align-bottom" th:text="${connection.price}">
+            <div class="card-footer text-muted" style="margin-top: auto;" th:with="symbol=${session.currencySymbol} ?: '€', rate=${session.rate} ?: 1.0" >
+              <h6 th:text="${connection.price * rate} + ' ' +  ${symbol}"></h6>
             </div>
-          </div>
+        </div>
     </div>
 </body>
 </html>

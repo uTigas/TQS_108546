@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Add page-specific CSS files or stylesheets here -->
+</head>
+<body>
+    <div th:replace="~{base.html}"></div>
+    <div class="container" >
+      <form method="POST" th:action="@{/purchase}" th:object="${formData}" accept-charset="UTF-8"><input name="_token" type="hidden">
+        <div class="row mt-5">
+          <div class="col">
+            <div class="control-group">
+                        <label class="control-label" for="inputName">Name</label>
+                        <div class="controls">
+                            <input id="inputName" placeholder="First Last" name="inputName" type="text" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="address">Address</label>
+                        <div class="controls">
+                            <input type="text" name="address" id="address" placeholder="123 Main St." required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="city">City</label>
+                        <div class="controls">
+                            <input type="text" name="city" id="city" placeholder="Anytown" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="state">State</label>
+                        <div class="controls">
+                            <input type="text" name="state" id="state" placeholder="State" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="zipCode">Zip Code</label>
+                        <div class="controls">
+                            <input type="text" name="zipCode" id="zipCode" placeholder="1234-567" required>
+                        </div>
+                    </div>
+          </div>
+          <div class="col">
+              
+                  <div class="control-group">
+                      <label class="control-label" for="creditCardType">Card Type</label>
+                      <div class="controls">
+                          <select class="form-inline" name="cardType" id="cardType">
+                              <option value="visa">Visa</option>
+                              <option value="amex">American Express</option>
+                              <option value="dinersclub">Diner's Club</option>
+                          </select>
+                      </div>
+                  </div>
+              
+                  <div class="control-group">
+                      <label class="control-label" for="creditCardNumber">Credit Card Number</label>
+                      <div class="controls">
+                          <input type="text" id="creditCardNumber" name="creditCardNumber" placeholder="Credit Card Number" required>
+                      </div>
+                  </div>
+              
+                  <div class="control-group">
+                      <label class="control-label" for="creditCardMonth">Month</label>
+                      <div class="controls">
+                          <input type="text" id="creditCardMonth" name="creditCardMonth" placeholder="Month" value="11" required>
+                      </div>
+                  </div>
+              
+                  <div class="control-group">
+                      <label class="control-label" for="creditCardYear">Year</label>
+                      <div class="controls">
+                          <input type="text" id="creditCardYear" name="creditCardYear" placeholder="Year" value="2017" required>
+                      </div>
+                  </div>
+              
+                  <div class="control-group">
+                      <label class="control-label" for="nameOnCard">Name on Card</label>
+                      <div class="controls">
+                          <input type="text" id="nameOnCard" placeholder="John Smith" name="nameOnCard">
+                      </div>
+                  </div>
+                  
+                  <input type="hidden" name="connectionId" th:value="${connectionId}" />
+
+                  <div class="control-group mt-5">
+                      <div class="controls">
+                          <input class="btn btn-primary"  type="submit" value="Purchase Ticket" style="background-color: rgb(0,0,153);">
+                      </div>
+                  </div>
+          </div>
+
+        </div>
+       
+        </form>
+    </div>
+</body>
+</html>
