@@ -19,5 +19,7 @@ docker build -t "$image_name" "$dockerfile_path"
 docker run -d -p 3306:3306 --name "$container_name" "$image_name"
 
 sleep 7
+mvn -f ./fs_webApp/pom.xml test -Dspring-boot.run.arguments=--initialize-data
+
 mvn -f fs_webApp/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=uTigas_TQS_108546
 
