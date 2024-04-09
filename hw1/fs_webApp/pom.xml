@@ -14,6 +14,8 @@
 	<name>fs_webApp</name>
 	<description>Full Stack Application for TQS 23/24</description>
 	<properties>
+		<sonar.organization>utigas</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<slf4j.version>2.0.12</slf4j.version>
         <logback.version>1.5.3</logback.version>
 
@@ -44,6 +46,16 @@
 		<junit-platform-suite.version>1.10.1</junit-platform-suite.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>3.0.0</version>
+		</dependency>
 		<dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>

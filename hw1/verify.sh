@@ -19,7 +19,7 @@ docker build -t "$image_name" "$dockerfile_path"
 docker run -d -p 3306:3306 --name "$container_name" "$image_name"
 
 sleep 7
-mvn mvn -f fs_webApp/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=uTigas_TQS_108546
+mvn -f fs_webApp/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=uTigas_TQS_108546
 
 # Check the exit code of the mvn test command
 if [ $? -ne 0 ]; then
