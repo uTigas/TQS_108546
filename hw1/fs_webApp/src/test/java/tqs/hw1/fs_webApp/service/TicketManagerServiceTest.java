@@ -14,13 +14,12 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import tqs.hw1.fs_webApp.data.entity.Terminal;
-import tqs.hw1.fs_webApp.data.repository.TerminalRepository;
 
 @SpringBootTest
 public class TicketManagerServiceTest {
 
     @Mock
-    private TerminalRepository terminalRepository;
+    private TerminalService terminalService;
 
     @InjectMocks
     private TicketManagerService ticketManagerService;
@@ -35,7 +34,7 @@ public class TicketManagerServiceTest {
 
         List<Terminal> expectedTerminals = new ArrayList<>();
         expectedTerminals.add(new Terminal());
-        when(terminalRepository.findAll()).thenReturn(expectedTerminals);
+        when(terminalService.getAllTerminals()).thenReturn(expectedTerminals);
 
         List<Terminal> result = ticketManagerService.getAllTerminals();
 

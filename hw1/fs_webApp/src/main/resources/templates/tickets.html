@@ -12,7 +12,7 @@
       <div class="row mt-5">
         <div class="col">
           <h4 style="text-align: center;" id="initialMessage">Enter your Ticket TOKEN:</h4>
-          <h4 th:if="${ticket == null}" style="text-align: center;" id="errorMessage" >Invalid Token. Please check the details and try again:</h4>
+          <h4 th:if="${ticket == null}" style="color:darkred; text-align: center;" id="errorMessage">Invalid Token. Please check the details and try again:</h4>
         </div>
       </div>
       <div class="row">
@@ -35,7 +35,7 @@
             <div th:each="stint: ${ticket.stints}" class="card text-center col-5 mt-3" style="height: 300px; display: inline-flex; flex-direction: column;">
                 <div class="card-header"  style="background-color: rgb(0,0,153); color: white;" th:text="'Bus ' + ${stint.con.bus.id} + ' Seat nº' + ${stint.seat.seatNumber}" ></div>
                 <div class="card-body">
-                  <h5 class="card-title" th:text="${stint.con.origin.name}"></h5>
+                  <h5 class="card-title" th:text="${stint.con.origin.name} + ' - ' + ${stint.con.destination.name}"></h5>
                   <p class="card-text" th:text="${stint.con.destination.description}"></p>
                   <p class="card-text" th:text="'Departure : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(stint.con.departure), 'yyyy-MM-dd HH:mm:ss')}"></p>
                   <p class="card-text" th:text="'Arrival : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(stint.con.arrival), 'yyyy-MM-dd HH:mm:ss')}"></p>

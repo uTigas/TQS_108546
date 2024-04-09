@@ -12,6 +12,7 @@ public class PurchaseForm {
     private String creditCardYear;
     private String nameOnCard;
     private int connectionId;
+    private int returnId;
 
     public String getInputName() {
         return this.inputName;
@@ -101,4 +102,11 @@ public class PurchaseForm {
         this.connectionId = connectionId;
     }
 
+    public int getReturnId() {
+        return this.returnId;
+    }
+
+    public void setReturnId(int returnId) {
+        this.returnId = returnId;
+    }
 }

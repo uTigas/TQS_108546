@@ -16,7 +16,7 @@
             <div class="card-body">
               <h5 class="card-title" th:text="${terminal.name}"></h5>
               <p class="card-text" th:text="${terminal.description}"></p>
-              <a th:href="@{/results(destination=${terminal.name})}" class="btn btn-primary bg-warning" style="color: black;">Check Connections</a>
+              <a th:href="@{/results(origin=,destination=${terminal.name},fromDate=,toDate=,findReturn=false)}" class="btn btn-primary bg-warning" style="color: black;">Check Connections</a>
             </div>
             <div class="card-footer text-muted align-bottom" style="margin-top: auto;">
               2 days ago

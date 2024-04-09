@@ -15,7 +15,7 @@ public class CurrencyService {
     CurrencyRepository repo;
 
     public Optional<Currency> getCurrency(){
-        return repo.findById("1");
+        return repo.findById(1);
     }
     public Currency changeCurrency(Currency cur){
         return repo.save(cur);

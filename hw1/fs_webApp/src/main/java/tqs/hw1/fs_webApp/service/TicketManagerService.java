@@ -83,19 +83,18 @@ public class TicketManagerService {
         for (Connection con : newConnections) {
             Stint newStint= new Stint();
             newStint.setCon(con);
-
-            newStint.setSeat(seats.findAvailable(con).get().findFirst().get());
+            System.out.println("Available Seats:" + seats.findAvailable(con).size());
+            newStint.setSeat(seats.findAvailable(con).get(0));
 
             newStints.add(newStint);
             stints.saveStint(newStint);
         }
-
+        
         newTicket.setStints(newStints);
         newTicket.setTimestamp(System.currentTimeMillis());
         newTicket.setToken(TokenGenerator.generateToken());
-
+        
         ticket.saveTicket(newTicket);
-
         return newTicket;
         
     }

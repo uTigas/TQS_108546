@@ -12,8 +12,7 @@
         <table class="table">
             <thead>
             <tr>
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
+                <th id="thanksMessage">Thanks for Travelling with us!</th>
             </tr>
             </thead>
             <tbody>
@@ -25,9 +24,9 @@
                     <td>Status</td>
                     <td>PendingCapture</td>
                 </tr>
-                <tr>
+                <tr th:with="symbol=${session.currencySymbol} ?: '€', rate=${session.rate} ?: 1.0">
                     <td>Amount</td>
-                    <td th:text="${ticket.totalPrice * rate} ${currency}"></td>
+                    <td th:text="${ticket.totalPrice * rate} + ' ' +  ${symbol}"></td>
                 </tr>
                 <tr>
                     <td>Card Number</td>

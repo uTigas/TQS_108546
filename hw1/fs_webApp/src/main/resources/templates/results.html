@@ -8,22 +8,84 @@
 </head>
 <body>
     <div th:replace="~{base.html}"></div>
-    <div class="container" >
-        <div th:each="connection: ${connections}" class="card text-center col-5 mt-3" style="height: 300px; display: inline-flex; flex-direction: column;">
-            <div class="card-header"  style="background-color: rgb(0,0,153); color: white;" th:text="'Bus ' + ${connection.bus.id}"></div>
-            <div class="card-body">
-              <h5 class="card-title" th:text="${connection.origin.name}"></h5>
-              <p class="card-text" th:text="${connection.destination.description}"></p>
-              <p class="card-text" th:text="'Departure : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(connection.departure), 'yyyy-MM-dd HH:mm:ss')}"></p>
-              <p class="card-text" th:text="'Arrival : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(connection.arrival), 'yyyy-MM-dd HH:mm:ss')}"></p>
-
-              <a type="button" th:href="@{/purchase(connectionId=${connection.id})}" class="btn btn-primary" style="background-color: darkgreen; border-color: darkgreen; color: white;">Buy Ticket</a>
-            
-            </div>
-            <div class="card-footer text-muted" style="margin-top: auto;" th:with="symbol=${session.currencySymbol} ?: '€', rate=${session.rate} ?: 1.0" >
-              <h6 th:text="${connection.price * rate} + ' ' +  ${symbol}"></h6>
-            </div>
+    <div class="container mt-2" id="mainContainer" >
+      <div class="row">
+        <div class="col">
+            <h3>Select Trip:</h3>
         </div>
+      </div>
+      <div class="row">
+          <div class="col">
+            <div th:each="connection: ${connections}" class="card text-center col-5 mt-3" style=" display: inline-flex; flex-direction: column;">
+                <div class="card-header"  style="background-color: rgb(0,0,153); color: white;" th:text="'Bus ' + ${connection.bus.id}"></div>
+                <div class="card-body">
+                  <h5 class="card-title" th:text="${connection.origin.name} + ' - ' + ${connection.destination.name}"></h5>
+                  <h6 class="card-title" th:text="${connection.distance} + ' kms'"></h6>
+                  <p class="card-text" th:text="${connection.destination.description}"></p>
+                  <p class="card-text" th:text="'Departure : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(connection.departure), 'yyyy-MM-dd HH:mm:ss')}"></p>
+                  <p class="card-text" th:text="'Arrival : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(connection.arrival), 'yyyy-MM-dd HH:mm:ss')}"></p>
+    
+                  <a th:if="${!findReturn}" type="button" th:href="@{/purchase(connectionId=${connection.id})}" class="btn btn-primary" style="background-color: darkgreen; border-color: darkgreen; color: white;">Buy Ticket</a>
+                  <a th:if="${findReturn}" type="button" th:onclick="'selectReturn(\'' + ${connection.id} + '\')'" class="btn btn-primary" style="background-color: darkgreen; border-color: darkgreen; color: white;">Buy Ticket</a>
+
+                </div>
+                <div class="card-footer text-muted" style="margin-top: auto;" th:with="symbol=${session.currencySymbol} ?: '€', rate=${session.rate} ?: 1.0" >
+                  <h6 th:text="${connection.price * rate} + ' ' +  ${symbol}"></h6>
+                </div>
+            </div>
+          </div>
+      </div>
     </div>
+    <div class="container mt-5" id="returnContainer" hidden>
+      <div class="row">
+        <div class="col">
+            <h3>Select return Trip:</h3>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col">
+            <div th:each="connection: ${returnConnections}" class="card text-center col-5 mt-3" style=" display: inline-flex; flex-direction: column;">
+                <div class="card-header"  style="background-color: rgb(0,0,153); color: white;" th:text="'Bus ' + ${connection.bus.id}"></div>
+                <div class="card-body">
+                  <h5 class="card-title" th:text="${connection.origin.name} + ' - ' + ${connection.destination.name}"></h5>
+                  <h6 class="card-title" th:text="${connection.distance} + ' kms'"></h6>
+                  <p class="card-text" th:text="${connection.destination.description}"></p>
+                  <p class="card-text" th:text="'Departure : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(connection.departure), 'yyyy-MM-dd HH:mm:ss')}"></p>
+                  <p class="card-text" th:text="'Arrival : ' + ${#temporals.format(T(java.time.Instant).ofEpochSecond(connection.arrival), 'yyyy-MM-dd HH:mm:ss')}"></p>
+    
+                  <a type="button" th:onclick="'findWithReturn(\'' + ${connection.id} + '\')'" class="btn btn-primary" style="background-color: darkgreen; border-color: darkgreen; color: white;">Buy Ticket</a>
+                
+                </div>
+                <div class="card-footer text-muted" style="margin-top: auto;" th:with="symbol=${session.currencySymbol} ?: '€', rate=${session.rate} ?: 1.0" >
+                  <h6 th:text="${connection.price * rate} + ' ' +  ${symbol}"></h6>
+                </div>
+            </div>
+            <div th:if="${#lists.isEmpty(returnConnections)}">
+              <h4>No Return Trips available at the defined interval.</h4>
+              <a type="button" th:onclick="'findWithReturn(-1)'" class="btn btn-primary" style="background-color: darkgreen; border-color: darkgreen; color: white;">Continue</a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <script>
+      var conectionId;
+      function selectReturn(id){
+        connectionId = id;
+        var mainContainer = document.getElementById("mainContainer");
+        var returnContainer = document.getElementById("returnContainer");
+        mainContainer.hidden = true;
+        returnContainer.hidden = false;
+      }
+
+      function findWithReturn(id){
+        var url = "/purchase?connectionId=" + encodeURIComponent(connectionId);
+        if (id == -1){
+          window.location.href = url;
+        }
+        else{
+          window.location.href = url + "&returnId=" + encodeURIComponent(id);
+        }
+      }
+    </script>
 </body>
 </html>

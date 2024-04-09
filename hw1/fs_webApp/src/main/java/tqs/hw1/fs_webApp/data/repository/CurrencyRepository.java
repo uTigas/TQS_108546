@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import tqs.hw1.fs_webApp.data.entity.Currency;
 
 @Repository
-public interface CurrencyRepository extends CrudRepository<Currency, String>{
+public interface CurrencyRepository extends CrudRepository<Currency, Integer>{
     List<Currency> findAll();
 }

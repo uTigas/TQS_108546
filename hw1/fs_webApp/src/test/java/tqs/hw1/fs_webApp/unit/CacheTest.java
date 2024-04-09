@@ -1,4 +1,4 @@
-package tqs.hw1.fs_webApp.integration;
+package tqs.hw1.fs_webApp.unit;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,6 +28,7 @@ public class CacheTest {
 
     @MockBean
     private RestTemplate restTemplate;
+    
 
     @Test
     void testGetExchangeRate_CacheHit() {
@@ -47,5 +48,21 @@ public class CacheTest {
 
         verify(restTemplate, never()).getForObject(any(String.class), any());
     }
-
+    /*
+     
+     @Test
+     void testGetExchangeRate_CacheTTLExpires() throws InterruptedException {
+         Cache exchangeRatesCache = cacheManager.getCache("exchangeRates");
+         exchangeRatesCache.put("EUR", 1.0);
+ 
+         exchangeRateService.getExchangeRate("USD");
+         
+         Thread.sleep(12000l); //Default Cache TTL is 10 seconds, check if it expired after 12 seconds
+         
+         exchangeRateService.getExchangeRate("GBP");
+ 
+         // Verify that the cache has been refreshed
+         verify(restTemplate, atLeast(1)).getForObject(any(String.class), any());
+     }
+     */
 }

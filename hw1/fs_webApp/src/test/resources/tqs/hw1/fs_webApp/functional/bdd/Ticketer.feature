@@ -3,9 +3,9 @@
 Feature: Ticketer Full Stack Operations
 
     Background: Setup
-        Given Im in the mainpage
+        Given Im in the main page
 
     Scenario: List Terminals
-        When I click the Terminals Button on the Main Page
+        When I click Look For Adventures
         Then Im presented with multiple terminal options
 

@@ -19,8 +19,6 @@ public class Reservation {
     private long timestamp;
 
     private double totalPrice;
-
-    
     
     @OneToMany
     private List<Stint> stints;
@@ -55,6 +53,7 @@ public class Reservation {
     }
 
     public void setStints(List<Stint> stints) {
+        this.totalPrice = 0.0;
         this.stints = stints;
         for (Stint st : stints) {
             this.totalPrice += st.getCon().getPrice();

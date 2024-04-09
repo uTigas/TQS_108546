@@ -1,8 +1,8 @@
 package tqs.hw1.fs_webApp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import tqs.hw1.fs_webApp.data.entity.Connection;
@@ -15,7 +15,7 @@ public class SeatService {
     @Autowired
     SeatRepository repo;
 
-    public Page<Seat> findAvailable(Connection con){
-        return repo.findAvailableSeat(PageRequest.of(0, 1) ,con.getId());
+    public List<Seat> findAvailable(Connection con){
+        return repo.findAvailableSeat(con);
     }
 }

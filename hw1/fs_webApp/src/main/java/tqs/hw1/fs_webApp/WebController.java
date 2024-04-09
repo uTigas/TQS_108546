@@ -50,7 +50,8 @@ public class WebController {
         if (token != null){
             Map<String, String> params = new HashMap<String,String>();
             params.put("token", token);
-            model.addAttribute("ticket", restTemplate.getForObject(uri + "tickets?token={token}",Reservation.class, params));
+            Reservation res= restTemplate.getForObject(uri + "tickets?token={token}",Reservation.class, params);
+            model.addAttribute("ticket", res);
         }
         return "tickets";
     }
@@ -62,35 +63,50 @@ public class WebController {
     }
 
     @GetMapping("/results")
-    public String results(@RequestParam String origin, @RequestParam String destination, @RequestParam String fromDate, @RequestParam String toDate, Model model){
+    public String results(@RequestParam String origin, @RequestParam String destination, @RequestParam String fromDate, @RequestParam String toDate, @RequestParam Boolean findReturn, Model model){
         Map<String, String> params = new HashMap<String,String>();
         params.put("origin", origin);
         params.put("destination", destination);
+        if (findReturn){
+            model.addAttribute("findReturn", true);
+        }
+        else
+            model.addAttribute("findReturn", false);
         if (fromDate != ""){
             params.put("fromDate", fromDate);
             if (toDate != ""){
                 params.put("toDate", toDate);
                 model.addAttribute("connections", restTemplate.getForObject(uri + "connections?origin={origin}&destination={destination}&fromDate={fromDate}&toDate={toDate}",List.class, params));
+                model.addAttribute("returnConnections", restTemplate.getForObject(uri + "connections?origin={destination}&destination={origin}&fromDate={fromDate}&toDate={toDate}",List.class, params));
             }
             else{
                 model.addAttribute("connections", restTemplate.getForObject(uri + "connections?origin={origin}&destination={destination}&fromDate={fromDate}",List.class, params));
+                model.addAttribute("returnConnections", restTemplate.getForObject(uri + "connections?origin={destination}&destination={origin}&fromDate={fromDate}",List.class, params));
             }
         }
         else{
             if (toDate != ""){
                 params.put("toDate", toDate);
                 model.addAttribute("connections", restTemplate.getForObject(uri + "connections?origin={origin}&destination={destination}&toDate={toDate}",List.class, params));
+                model.addAttribute("returnConnections", restTemplate.getForObject(uri + "connections?origin={destination}&destination={origin}&toDate={toDate}",List.class, params));
             }
-            else
+            else{
                 model.addAttribute("connections", restTemplate.getForObject(uri + "connections?origin={origin}&destination={destination}",List.class, params));
-
+                model.addAttribute("returnConnections", restTemplate.getForObject(uri + "connections?origin={destination}&destination={origin}",List.class, params));
+            }
         }
+
         return "results";
     }
 
     @GetMapping("/purchase")
-    public String getPurchase(@RequestParam String connectionId, Model model){
+    public String getPurchase(@RequestParam String connectionId,@RequestParam(required = false) String returnId,  Model model){
         model.addAttribute("connectionId", connectionId);
+        if (returnId != null)
+            model.addAttribute("returnId", returnId);
+        else
+            model.addAttribute("returnId", "-1");
+
         return "form";
     }
 

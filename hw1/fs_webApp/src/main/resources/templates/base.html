@@ -78,6 +78,7 @@
           body: 'currency=' + currency,
         }).then(response => {
           if (response.ok) {
+            console.log('Currency successfully changes')
             location.reload();
           } else {
             console.error('Failed to set currency');

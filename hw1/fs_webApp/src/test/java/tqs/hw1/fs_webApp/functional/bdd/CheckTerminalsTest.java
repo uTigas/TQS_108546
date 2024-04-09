@@ -4,14 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
-import static io.github.bonigarcia.seljup.BrowserType.FIREFOX;
-
-import io.github.bonigarcia.seljup.DockerBrowser;
 import io.github.bonigarcia.seljup.SeleniumJupiter;
 import tqs.hw1.fs_webApp.functional.bdd.PageObjects.HomePage;
 import tqs.hw1.fs_webApp.functional.bdd.PageObjects.TerminalPage;
@@ -27,7 +24,7 @@ public class CheckTerminalsTest {
     TerminalPage terminalPage;
 
     @Test
-    void checkTerminals(@DockerBrowser(type = FIREFOX) WebDriver driver)  {
+    void checkTerminals(ChromeDriver driver)  {
         homePage = new HomePage(driver, randomServerPort);
             
         homePage.resizeScreen();
