@@ -1,5 +1,5 @@
 # Use the MySQL 8.3.0 base image
-FROM mysql:8.3.0
+FROM mysql:8.0
 
 # Environment variables
 ENV MYSQL_DATABASE=hw1
