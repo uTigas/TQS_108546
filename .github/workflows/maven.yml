@@ -29,6 +29,10 @@ jobs:
     - name: List Directory Files for Debug
       run: ls -a
     - name: Set executable permissions for compile.sh
+      run: chmod +x compile.sh
+    - name: Deploy Mysql
+      run: ./compile.sh mysql hw1
+    - name: Set executable permissions for test.sh
       run: chmod +x test.sh
-    - name: Run Application with testing
-      run: ./test.sh mysql hw1
+    - name: Test Application
+      run: ./test.sh
