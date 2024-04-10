@@ -34,6 +34,10 @@ jobs:
         unzip chromedriver_linux64.zip
         sudo mv chromedriver /usr/local/bin/
         chromedriver --version
+    - name: Print Chrome binary location
+      run: which google-chrome
+    - name: Print PATH variable
+      run: echo $PATH
     - name: List Directory Files for Debug
       run: ls -a
     - name: Set executable permissions for compile.sh
