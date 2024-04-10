@@ -21,10 +21,19 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Install Chrome for Testing and its driver
+    - name: Install Google Chrome
       run: |
-        npm i puppeteer
-        npx @puppeteer/browsers install chrome@stable
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome-stable_current_amd64.deb
+        sudo apt-get install -f
+    - name: Install ChromeDriver
+      run: |
+        wget https://chromedriver.storage.googleapis.com/LATEST_RELEASE
+        CHROMEDRIVER_VERSION=$(cat LATEST_RELEASE)
+        wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/local/bin/
+        chromedriver --version
     - name: List Directory Files for Debug
       run: ls -a
     - name: Set executable permissions for compile.sh
